@@ -1,22 +1,35 @@
-//
-// Created by Mina on 28.2.2024 г..
-//
-
-#ifndef IMPLEMENTATIONS_STRING_H
-#define IMPLEMENTATIONS_STRING_H
-
-#endif //IMPLEMENTATIONS_STRING_H
-class MyString{
+#pragma once
+#include <iostream>
+#include <cstring>
+#pragma warning(disable : 4996)
+class MyString {
+private:
     char* str;
 
 public:
     MyString();
 
-    MyString(char* val);
+    MyString(const char* val);
 
-    MyString(const MyString &other);
+    MyString(const MyString& other);
 
-    MyString(MyString &&source);
+    MyString &operator=(const MyString & other);
+
+    bool operator==(const MyString& other);
+
+    bool operator!=(const MyString& other);
+
+    friend std::ostream& operator<<(std::ostream& ost,const MyString& other);
+
+    friend std::istream& operator>>(std::istream& ist, MyString& other);
+
+    char operator[](int index) const;
+
+    int getLength();
+
+    void print();
+
+    char* toStr() const;
 
     ~MyString();
 };
